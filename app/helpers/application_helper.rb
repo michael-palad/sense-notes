@@ -4,6 +4,10 @@ module ApplicationHelper
   end
   
   def login_text
-    raw('<span class="glyphicon glyphicon-login"></span> Login')
+    raw('<span class="glyphicon glyphicon-log-in"></span> Login')
+  end
+  
+  def logout_text
+    raw('<span class="glyphicon glyphicon-log-out"></span> Logout')
   end
 end
