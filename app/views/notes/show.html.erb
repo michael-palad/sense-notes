@@ -1,6 +1,11 @@
 <div class="container notes-main">
   <h2><%= @note.title %></h2>
   <p><%= @note.content %></p>
+  <% if @note.category_id.nil? %>
+    <p class="text-info">Uncategorized</p>
+  <% else %>
+    <p class="text-info"><%= @note.category.name %></p>
+  <% end %>
   
   <div class="btn-actions">
     <%= link_to "Edit Note", edit_note_path(@note),

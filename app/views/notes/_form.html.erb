@@ -16,6 +16,16 @@
     </div>
     
     <div class="form-group">
+      <%= f.label :category_id, class: "control-label col-sm-1",
+            for: "note_category_id" %>
+      <div class="col-sm-3">
+        <%= f.collection_select :category_id, Category.where(user: current_user),
+            :id, :name, { prompt: "Uncategorized", selected: @note.category_id },
+            { class: "form-control" } %> 
+      </div>
+    </div>
+    
+    <div class="form-group">
       <div class="col-sm-offset-1 col-sm-6">
         <% if @note.new_record? %>
           <%= f.submit "Create", class: "btn btn-primary btn-lg btn-space" %>

@@ -3,11 +3,19 @@
     <% @notes.each do |note| %>
       <h2><%= link_to note.title, note %></h2>
       <p><%= note.content %></p>
-  <% end %>
+      
+      <% if note.category_id.nil? %>
+        <p class="text-info">Uncategorized</p>
+      <% else %>
+        <p class="text-info"><%= note.category.name %></p>
+      <% end %>
+      
+    <% end %>
   <% else %>
     <h3>You haven't made any notes yet.
         Want to create one?</h3>
     <br>
+    
     <%= link_to "Create New Note", new_note_path, class: "btn btn-success" %>
   <% end %>
   
