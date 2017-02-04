@@ -5,9 +5,9 @@
       <p><%= note.content %></p>
       
       <% if note.category_id.nil? %>
-        <p class="text-info">Uncategorized</p>
+        <p class="label label-primary">Uncategorized</p>
       <% else %>
-        <p class="text-info"><%= note.category.name %></p>
+        <p class="label label-primary"><%= note.category.name %></p>
       <% end %>
       
     <% end %>
