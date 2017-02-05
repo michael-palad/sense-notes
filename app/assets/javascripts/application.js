@@ -14,4 +14,14 @@
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
+//= require tinymce/tinymce.min.js
+
+document.addEventListener("turbolinks:load", function() {
+  tinymce.remove();
+  tinymce.init({ 
+      selector: "textarea.content-edit",
+      plugins: "image media link code codesample",
+      toolbar: "undo redo | bold italic link | stylesheet | imag media | " +
+               "code codesample"
+  });
+})
