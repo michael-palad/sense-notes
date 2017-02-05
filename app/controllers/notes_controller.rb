@@ -20,7 +20,7 @@ class NotesController < ApplicationController
         @note.category = @category
         render 'new'
       else
-        flash[:alert] = "Unable to Create Category"
+        flash.now[:alert] = @category.errors.first[1]
         render 'new'
       end
     else
@@ -45,7 +45,7 @@ class NotesController < ApplicationController
         @note.category = @category
         render 'edit'
       else
-        flash[:alert] = "Unable to Create Category"
+        flash.now[:alert] = @category.errors.first[1]
         render 'edit'
       end
       

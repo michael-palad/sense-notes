@@ -1,4 +1,23 @@
-  <%= form_for(@note, html: { class: "form-horizontal" }) do |f| %> 
+  <%= form_for(@note, html: { class: "form-horizontal" }) do |f| %>
+    <div>
+      <% if @note.errors.any? %>
+         <h4 class="text-danger"><%= pluralize(@note.errors.count, "error") %>
+             errors prevented this note from being saved.
+         </h3>
+         <ul>
+           <% @note.errors.full_messages.each do |msg| %>
+             <li><span class="text-danger"><%= msg %></span></li>
+           <% end %>
+         </ul>
+      <% elsif flash %>
+         <ul>
+           <% flash.each do |name, msg| %>
+             <li><span class="<%= name %>"><%= msg %></span</li>
+           <% end %>
+         </ul>
+      <% end %>
+    </div>
+  
     <div class="form-group">
       <%= f.label :title, class: "control-label col-sm-1",
             for: "note_title" %>
