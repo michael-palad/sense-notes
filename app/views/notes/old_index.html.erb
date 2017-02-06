@@ -1,0 +1,22 @@
+<div class="container notes-main">
+  <% if @notes.any? %>
+    <% @notes.each do |note| %>
+      <h2><%= link_to note.title, note %></h2>
+      <p><%= note.content.html_safe %></p>
+      
+      <% if note.category_id.nil? %>
+        <p class="label label-primary">Uncategorized</p>
+      <% else %>
+        <p class="label label-primary"><%= note.category.name %></p>
+      <% end %>
+      
+    <% end %>
+  <% else %>
+    <h3>You haven't made any notes yet.
+        Want to create one?</h3>
+    <br>
+    
+    <%= link_to "Create New Note", new_note_path, class: "btn btn-success" %>
+  <% end %>
+  
+</div> <!-- Container -->

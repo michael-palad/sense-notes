@@ -1,16 +1,31 @@
 <div class="container notes-main">
   <% if @notes.any? %>
-    <% @notes.each do |note| %>
-      <h2><%= link_to note.title, note %></h2>
-      <p><%= note.content.html_safe %></p>
-      
-      <% if note.category_id.nil? %>
-        <p class="label label-primary">Uncategorized</p>
-      <% else %>
-        <p class="label label-primary"><%= note.category.name %></p>
-      <% end %>
-      
+    <%= search_form_for @q do |f| %>
+      <%= f.label :title_or_content_cont, "Search: " %>
+      <%= f.search_field :title_or_content_cont %>
+
+      <%= f.submit %>
     <% end %>
+    
+    <table class="table">
+      <thead>
+        <tr>
+          <th><%= sort_link(@q, :title) %></th>
+          <th><%= sort_link(@q, :content) %></th>    
+          <th><%= sort_link(@q, :category_name) %></th> 
+        </tr>
+      </thead>    
+      <tbody>
+        <% @notes.each do |note| %>
+          <tr>
+            <td><%= note.title %></td>      
+            <td><%= note.content.html_safe %></td>
+            <td><%= note.category.name %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    
   <% else %>
     <h3>You haven't made any notes yet.
         Want to create one?</h3>

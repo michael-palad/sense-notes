@@ -2,7 +2,9 @@ class NotesController < ApplicationController
   before_action :find_note, only: [:show, :edit, :update, :destroy]
 
   def index
-    @notes = current_user.notes.order('created_at DESC')
+    #@notes = current_user.notes.order('created_at DESC')
+    @q = current_user.notes.ransack(params[:q])
+    @notes = @q.result
   end
   
   def show
