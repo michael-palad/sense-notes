@@ -57,10 +57,10 @@
     <div class="form-group">
       <div class="col-sm-offset-1 col-sm-6">
         <% if @note.new_record? %>
-          <%= f.submit "Create", class: "btn btn-primary btn-lg btn-space" %>
+          <%= f.submit "Create", class: "btn btn-success btn-lg btn-space" %>
           <%= link_to "Cancel", notes_path, class: "btn btn-default btn-lg" %>
         <% else %>
-          <%= f.submit "Update", class: "btn btn-primary btn-lg btn-space" %>
+          <%= f.submit "Update", class: "btn btn-success btn-lg btn-space" %>
           <%= link_to "Cancel", @note, class: "btn btn-default btn-lg" %>
         <% end %>
       </div>

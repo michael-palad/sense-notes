@@ -3,6 +3,7 @@ class NotesController < ApplicationController
 
   def index
     #@notes = current_user.notes.order('created_at DESC')
+    @notes_empty = current_user.notes.empty?
     @q = current_user.notes.ransack(params[:q])
     @notes = @q.result
   end

@@ -1,30 +1,45 @@
 <div class="container notes-main">
-  <% if @notes.any? %>
-    <%= search_form_for @q do |f| %>
-      <%= f.label :title_or_content_cont, "Search: " %>
-      <%= f.search_field :title_or_content_cont %>
-
-      <%= f.submit %>
-    <% end %>
+  <% unless @notes_empty %>
+    <div class="search-forms">
+      <%= search_form_for(@q, class: "form-inline") do |f| %>
+        <div class="form-group">
+          <%= f.label :title_or_content_cont, "Search: " %>
+          <%= f.search_field :title_or_content_cont, class: "form-control" %>
+        </div>
+        
+        <%= f.submit "Search", class: "btn btn-success" %>
+      <% end %>
+    </div>
     
-    <table class="table">
-      <thead>
-        <tr>
-          <th><%= sort_link(@q, :title) %></th>
-          <th><%= sort_link(@q, :content) %></th>    
-          <th><%= sort_link(@q, :category_name) %></th> 
-        </tr>
-      </thead>    
-      <tbody>
-        <% @notes.each do |note| %>
+    <% if @notes.any? %>
+      <table class="table table-hover table-bordered">
+        <thead>
           <tr>
-            <td><%= note.title %></td>      
-            <td><%= note.content.html_safe %></td>
-            <td><%= note.category.name %></td>
+            <th><%= sort_link(@q, :title) %></th>
+            <th><%= sort_link(@q, :content) %></th>    
+            <th><%= sort_link(@q, :category_name) %></th> 
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>    
+        <tbody>
+          <% @notes.each do |note| %>
+            <tr>
+              <td><%= link_to note.title, note %></td>      
+              <td><%= truncate(strip_tags(note.content),
+                      length: 100) %>
+              </td>
+              <% if note.category.nil? %>
+                <td>Uncategorized</td>
+              <% else %>
+                <td><%= note.category.name %></td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <h3>There are no notes that matches your search term.</h3>
+      <p><%= link_to "Return", notes_path, class: "btn btn-primary" %></p>
+    <% end %>
     
   <% else %>
     <h3>You haven't made any notes yet.
