@@ -1,4 +1,4 @@
-class HomePageForm
+class PageForm
   include Capybara::DSL
   
   def visit_page
@@ -25,5 +25,11 @@ class HomePageForm
     end
     
     self
+  end
+  
+  def login_user(user)
+    self.visit_page.click('Login')
+        .fill('Email': user.email, 'Password': user.password)
+        .click('Log in', 'form')  
   end
 end
