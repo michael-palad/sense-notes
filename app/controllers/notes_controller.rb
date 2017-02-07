@@ -1,8 +1,8 @@
 class NotesController < ApplicationController
   before_action :find_note, only: [:show, :edit, :update, :destroy]
+  before_action :check_owner, only: [:show, :edit, :update, :destroy]
 
   def index
-    #@notes = current_user.notes.order('created_at DESC')
     @notes_empty = current_user.notes.empty?
     @q = current_user.notes.ransack(params[:q])
     @notes = @q.result
@@ -78,5 +78,12 @@ class NotesController < ApplicationController
   
   def add_category?
     params[:commit] == "Add Category"
+  end
+  
+  def check_owner
+    note = Note.find(params[:id])
+    if current_user != note.user
+      redirect_to notes_path 
+    end
   end
 end
