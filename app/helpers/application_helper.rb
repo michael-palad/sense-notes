@@ -14,4 +14,8 @@ module ApplicationHelper
   def logout_text
     raw('<span class="glyphicon glyphicon-log-out"></span> Logout')
   end
+  
+  def edit_profile_text  
+    raw('<span class="glyphicon glyphicon-user"></span> Edit Profile')  
+  end
 end
