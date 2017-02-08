@@ -4,8 +4,28 @@ class NotesController < ApplicationController
 
   def index
     @notes_empty = current_user.notes.empty?
-    @q = current_user.notes.ransack(params[:q])
-    @notes = @q.result
+    if @notes_empty
+      render :index and return  
+    end
+    
+    @notes = nil
+    category_id = ""
+    if filter_by_category?
+      logger.debug "DBEG: #{params[:filter][:category_id].blank?}"
+      category_id = params[:filter][:category_id]
+      unless category_id.blank?
+        @q = current_user.notes.ransack(category_id_eq: category_id) 
+        @notes = @q.result
+      end
+    end
+     
+    if @notes.nil?
+      @q = current_user.notes.ransack(params[:q])
+      @notes = @q.result
+    end
+    
+    @filter_shown = current_user.categories.any?
+    @filter = Filter.new(category_id)
   end
   
   def show
@@ -77,7 +97,11 @@ class NotesController < ApplicationController
   end
   
   def add_category?
-    params[:commit] == "Add Category"
+    params[:commit] == "Add Category"  
+  end
+  
+  def filter_by_category?
+    params[:commit] == "Filter by Category" 
   end
   
   def check_owner
