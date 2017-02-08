@@ -4,8 +4,15 @@ class Category < ApplicationRecord
   belongs_to :user
   
   validates :name, presence: true
-  validate :category_unique_to_user
   
+  # Doesn't seem to work as it should
+  # validates :name, uniqueness: {
+  #   scope: :user_id,
+  #   message: 'category name must be unique to user',
+  #   case_sensitive: true
+  # }
+  
+  validate :category_unique_to_user
   
   def category_unique_to_user
     unless name_doesnt_exist_for_user?
