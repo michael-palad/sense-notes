@@ -32,4 +32,10 @@ class PageForm
         .fill('Email': user.email, 'Password': user.password)
         .click('Log in', 'form')  
   end
+  
+  def select_option(option, from_select)
+    select(option, from: from_select)
+    
+    self
+  end
 end
