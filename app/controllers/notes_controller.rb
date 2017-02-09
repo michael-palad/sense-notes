@@ -11,7 +11,6 @@ class NotesController < ApplicationController
     @notes = nil
     category_id = ""
     if filter_by_category?
-      logger.debug "DBEG: #{params[:filter][:category_id].blank?}"
       category_id = params[:filter][:category_id]
       unless category_id.blank?
         @q = current_user.notes.ransack(category_id_eq: category_id) 
@@ -37,15 +36,7 @@ class NotesController < ApplicationController
   
   def create
     if add_category?
-      @note = Note.new(note_params)
-      @category = Category.new(name: note_params[:new_category], user: current_user)
-      if @category.save
-        @note.category = @category
-        render 'new'
-      else
-        flash.now[:alert] = @category.errors.first[1]
-        render 'new'
-      end
+     add_category_and_render('new')
     else
       @note = current_user.notes.build(note_params)
       if @note.save
@@ -54,7 +45,6 @@ class NotesController < ApplicationController
         render 'new'
       end
     end
-    
   end
   
   def edit
@@ -62,16 +52,7 @@ class NotesController < ApplicationController
   
   def update
     if add_category?
-      @note = Note.new(note_params)
-      @category = Category.new(name: note_params[:new_category], user: current_user)
-      if @category.save
-        @note.category = @category
-        render 'edit'
-      else
-        flash.now[:alert] = @category.errors.first[1]
-        render 'edit'
-      end
-      
+      add_category_and_render('edit')
     else
       if @note.update(note_params)
         redirect_to @note
@@ -110,4 +91,17 @@ class NotesController < ApplicationController
       redirect_to notes_path 
     end
   end
+  
+  def add_category_and_render(template)
+    @note = Note.new(note_params)
+    @category = Category.new(name: note_params[:new_category], user: current_user)
+    if @category.save
+      @note.category = @category
+      render template
+    else
+      @note.errors.add(:new_category, "can't be blank.")
+      render template
+    end  
+  end
+  
 end

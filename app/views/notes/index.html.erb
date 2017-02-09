@@ -3,7 +3,6 @@
     <div class="search-forms">
       <%= search_form_for(@q, class: "form-inline") do |f| %>
         <div class="form-group">
-          <%#= f.label :title_or_content_cont, "Search: " %>
           <%= f.search_field :title_or_content_cont, class: "form-control" %>
         </div>
         
@@ -14,8 +13,6 @@
     <% if @filter_shown %>
       <div class="category-filter">
         <%= form_tag(notes_path, method: :get, class: "form-inline") do %>
-             <%#= label_tag :filter, "Filter by Category", class: "control-label col-sm-3",
-                 for: "filter_category_id" %>
               <%= collection_select :filter, :category_id, Category.where(user: current_user),
                 :id, :name, { include_blank: "All Categories" },
                 { class: "form-control" } %> 

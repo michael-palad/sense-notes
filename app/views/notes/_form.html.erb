@@ -1,20 +1,19 @@
   <%= form_for(@note, html: { class: "form-horizontal" }) do |f| %>
     <div>
       <% if @note.errors.any? %>
-         <h4 class="text-danger"><%= pluralize(@note.errors.count, "error") %>
-             errors prevented this note from being saved.
-         </h3>
-         <ul>
-           <% @note.errors.full_messages.each do |msg| %>
-             <li><span class="text-danger"><%= msg %></span></li>
-           <% end %>
-         </ul>
-      <% elsif flash %>
-         <ul>
-           <% flash.each do |name, msg| %>
-             <li><span class="<%= name %>"><%= msg %></span</li>
-           <% end %>
-         </ul>
+        <h4 class="text-danger"><%= pluralize(@note.errors.count, "error") %>
+         prevented this 
+         <% if @note.errors[:new_category].blank? %>
+           note from being saved.
+         <% else %>
+           category from being added.
+         <% end %>
+        </h4>
+        <ul>
+          <% @note.errors.full_messages.each do |msg| %>
+            <li><span class="text-danger"><%= msg %></span></li>
+          <% end %>
+        </ul>
       <% end %>
     </div>
   
@@ -40,7 +39,7 @@
             for: "note_category_id" %>
       <div class="col-sm-3">
         <%= f.collection_select :category_id, Category.where(user: current_user),
-            :id, :name, { prompt: "Uncategorized", selected: @note.category_id },
+            :id, :name, { include_blank: "Uncategorized", selected: @note.category_id },
             { class: "form-control" } %> 
       </div>
     </div>
