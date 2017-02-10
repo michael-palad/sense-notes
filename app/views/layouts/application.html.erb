@@ -26,8 +26,11 @@
       
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
-          <li class="active">
+          <li class="<%= 'active' if current_page?(root_path) %>">
             <%= link_to "Home", root_path %>
+          </li>
+          <li class="<%= 'active' if current_page?(about_path) %>">
+            <%= link_to "About", about_path %>
           </li>
         </ul>
         

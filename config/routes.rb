@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+  
   get 'page/index'
 
   authenticated :user do
@@ -8,4 +9,6 @@ Rails.application.routes.draw do
   end
   
   root to: "page#index"
+  
+  get "about", to: "page#about"
 end
