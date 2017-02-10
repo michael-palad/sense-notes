@@ -30,7 +30,7 @@ class PageForm
   def login_user(user)
     self.visit_page.click('Login')
         .fill('Email': user.email, 'Password': user.password)
-        .click('Log in', 'form')  
+        .click('Login', 'form')  
   end
   
   def select_option(option, from_select)

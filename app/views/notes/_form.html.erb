@@ -49,17 +49,20 @@
         <%= f.text_field :new_category, class: "form-control" %>
       </div>
       <div class="col-sm-3">
-        <%= f.submit "Add Category", class: "btn btn-primary" %>
+        <%= f.submit "Add Category", class: "btn btn-primary",
+            data: { disable_with: "Adding Category..." } %>
       </div>
     </div>
     
     <div class="form-group">
       <div class="col-sm-offset-1 col-sm-6">
         <% if @note.new_record? %>
-          <%= f.submit "Create", class: "btn btn-success btn-lg btn-space" %>
+          <%= f.submit "Create", class: "btn btn-success btn-lg btn-space",
+              data: { disable_with: "Creating..." } %>
           <%= link_to "Cancel", notes_path, class: "btn btn-default btn-lg" %>
         <% else %>
-          <%= f.submit "Update", class: "btn btn-success btn-lg btn-space" %>
+          <%= f.submit "Update", class: "btn btn-success btn-lg btn-space",
+              data: { disable_with: "Updating... " } %>
           <%= link_to "Cancel", @note, class: "btn btn-default btn-lg" %>
         <% end %>
       </div>

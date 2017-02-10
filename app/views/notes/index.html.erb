@@ -1,3 +1,5 @@
+<%= @page_title = "Notes" %>
+
 <div class="container notes-main">
   <% unless @notes_empty %>
     <div class="search-forms">
@@ -6,7 +8,8 @@
           <%= f.search_field :title_or_content_cont, class: "form-control" %>
         </div>
         
-        <%= f.submit "Search", class: "btn btn-success" %>
+        <%= f.submit "Search", class: "btn btn-success",
+            data: { disable_with: "Searching..." } %>
       <% end %>
     </div>
     
@@ -17,7 +20,8 @@
                 :id, :name, { include_blank: "All Categories" },
                 { class: "form-control" } %> 
           
-          <%= submit_tag "Filter by Category", class: "btn btn-success" %>
+          <%= submit_tag "Filter by Category", class: "btn btn-success",
+              data: { disable_with: "Filtering..." } %>
         <% end %>
       </div>
     <% end %>
@@ -39,9 +43,9 @@
                       length: 100) %>
               </td>
               <% if note.category.nil? %>
-                <td>Uncategorized</td>
+                <td><span class="label label-primary">Uncategorized</span></td>
               <% else %>
-                <td><%= note.category.name %></td>
+                <td><span class="label label-primary"><%= note.category.name %></span></td>
               <% end %>
             </tr>
           <% end %>

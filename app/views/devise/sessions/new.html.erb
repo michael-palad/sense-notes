@@ -1,6 +1,8 @@
+<%= @page_title = "Login" %>
+
 <div class="container devise-main">
 
-<h2>Log in</h2>
+<h2>Login</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name),
       html: { class: "form-horizontal" }) do |f| %>
@@ -31,11 +33,10 @@
 
   <div class="actions form-group">
     <div class="col-sm-offset-1 col-sm-6">
-      <%= f.submit "Log in", class: "btn btn-primary" %>
+      <%= f.submit "Login", class: "btn btn-primary", 
+          data: { disable_with: "Logging in..." }%>
     </div>
   </div>
 <% end %>
-
-<%= render "devise/shared/links" %>
 
 </div> <!-- Container -->
