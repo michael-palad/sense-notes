@@ -15,6 +15,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require tinymce/tinymce.min.js
+//= require data-confirm-modal
 
 document.addEventListener("turbolinks:load", function() {
   tinymce.remove();

@@ -34,6 +34,8 @@ gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 gem 'ransack', '~> 1.8', '>= 1.8.2'
 gem 'devise', '~> 4.2'
 
+gem 'data-confirm-modal', '~> 1.3'
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.5', '>= 3.5.2'
   gem 'factory_girl_rails', '~> 4.8'
