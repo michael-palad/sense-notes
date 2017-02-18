@@ -64,9 +64,7 @@
     </nav>  <!-- Navbar -->
 
     <% if controller_name == "notes_controller" %>
-      DBG: <%= controller_name %>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+      <%= render 'layouts/flash_messages' %>
     <% end %>
     
     <%= yield %>
