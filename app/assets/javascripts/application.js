@@ -16,6 +16,7 @@
 //= require turbolinks
 //= require tinymce/tinymce.min.js
 //= require data-confirm-modal
+//= require_tree .
 
 document.addEventListener("turbolinks:load", function() {
   tinymce.remove();
