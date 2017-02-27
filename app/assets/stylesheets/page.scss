@@ -1,4 +1,16 @@
-.main {
-  //background-color: lightblue;
+.pad-top {
+  margin-top: 48px;
+}
+
+html { height: 100%; }
+
+// for page controller actions only
+body.main {
   padding-top: 30px;
+  min-height: 100%; 
+  
+  background-repeat: no-repeat;
+  background-image: url(sense-notes-pic.jpg);
+  background-position: 50% 50%;
+  background-size: cover;
 }

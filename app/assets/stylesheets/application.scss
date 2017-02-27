@@ -24,3 +24,16 @@
 .alert {
   @extend .text-danger;
 }
+
+.jumbotron.main {
+  background-color: transparent;
+}
+
+.site-text {
+  color: white;
+  background-color: rgba(0,0,0,0.6);
+  padding: 0 30px 30px;
+  width: 50%;
+  border-radius: 25px;
+}
+
