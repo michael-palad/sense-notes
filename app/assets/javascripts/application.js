@@ -14,7 +14,7 @@
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require turbolinks
-//= require tinymce/tinymce.min.js
+//= require tinymce.min.js
 //= require data-confirm-modal
 //= require_tree .
 
