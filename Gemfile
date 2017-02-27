@@ -6,7 +6,6 @@ git_source(:github) do |repo_name|
 end
 
 gem 'rails', '~> 5.0.1'
-gem 'sqlite3'
 gem 'puma', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -39,6 +38,7 @@ gem 'data-confirm-modal', '~> 1.3'
 group :development, :test do
   gem 'rspec-rails', '~> 3.5', '>= 3.5.2'
   gem 'factory_girl_rails', '~> 4.8'
+  gem 'sqlite3'
 end
 
 group :test do
@@ -46,3 +46,6 @@ group :test do
   gem 'shoulda-matchers', '~> 3.1', '>= 3.1.1'
 end
 
+group :production do
+  gem 'pg'
+end
