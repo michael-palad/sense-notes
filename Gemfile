@@ -11,7 +11,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 
-gem 'jquery-rails'
+gem 'jquery-rails', '>= 4.3.4'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
@@ -29,7 +29,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 ### Added Gems
-gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
+gem 'bootstrap-sass', '~> 3.4', '>= 3.4.0'
 gem 'ransack', '~> 1.8', '>= 1.8.2'
 gem 'devise', '~> 4.2'
 
