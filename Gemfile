@@ -31,7 +31,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 ### Added Gems
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 gem 'ransack', '~> 1.8', '>= 1.8.2'
-gem 'devise', '~> 4.2'
+gem 'devise', '~> 4.7', '>= 4.7.1'
 
 gem 'data-confirm-modal', '~> 1.3'
 
