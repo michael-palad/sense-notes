@@ -7,9 +7,9 @@ end
 
 gem 'rails', '~> 5.0.1'
 gem 'puma', '~> 3.0'
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails', '~> 5.0', '>= 5.0.6'
 gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.2'
+gem 'coffee-rails', '~> 4.2', '>= 4.2.1'
 
 gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
@@ -20,7 +20,7 @@ group :development, :test do
 end
 
 group :development do
-  gem 'web-console', '>= 3.3.0'
+  gem 'web-console', '>= 3.4.0'
   gem 'listen', '~> 3.0.5'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
@@ -31,18 +31,18 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 ### Added Gems
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 gem 'ransack', '~> 1.8', '>= 1.8.2'
-gem 'devise', '~> 4.2'
+gem 'devise', '~> 4.2', '>= 4.2.0'
 
-gem 'data-confirm-modal', '~> 1.3'
+gem 'data-confirm-modal', '~> 1.3', '>= 1.3.0'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.5', '>= 3.5.2'
-  gem 'factory_girl_rails', '~> 4.8'
+  gem 'factory_girl_rails', '~> 4.8', '>= 4.8.0'
   gem 'sqlite3'
 end
 
 group :test do
-  gem 'capybara', '~> 2.12'
+  gem 'capybara', '~> 2.12', '>= 2.12.0'
   gem 'shoulda-matchers', '~> 3.1', '>= 3.1.1'
 end
 
